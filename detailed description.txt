@@ -1,0 +1,27 @@
+Detailed Description
+Data Loading and Preprocessing:
+
+The IMDB dataset is loaded using keras.datasets.imdb, with the top 10,000 most frequently occurring words considered.
+Word indices are adjusted to reserve special indices for padding, start of sequence, unknown words, and unused words.
+The reviews are padded to ensure uniform length (250 words) using keras.preprocessing.sequence.pad_sequences.
+Model Architecture:
+
+The model is a Sequential neural network with the following layers:
+Embedding layer: Converts word indices to dense vectors of fixed size (16).
+GlobalAveragePooling1D layer: Reduces the sequence dimension by averaging over the time steps.
+Dense layer: Fully connected layer with 16 units and ReLU activation.
+Dense layer: Output layer with 1 unit and sigmoid activation to predict the sentiment.
+Model Compilation and Training:
+
+The model is compiled with the Adam optimizer, binary cross-entropy loss, and accuracy as the evaluation metric.
+The training data is split into training and validation sets.
+The model is trained for 43 epochs with a batch size of 512.
+Model Evaluation and Saving:
+
+The model is evaluated on the test data to determine its accuracy.
+The trained model is saved to a file named my_ronit.keras.
+Model Inference:
+
+The saved model is loaded for inference.
+A function review_encode encodes a new review into the same format as the training data.
+The model predicts the sentiment of the encoded review, which is printed alongside the review text.
